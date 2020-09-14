@@ -6,11 +6,13 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Perfil {
     
+    @EqualsAndHashCode.Include
     private Long id;
     private String nome;
     private String sobre;
@@ -31,5 +33,5 @@ public class Perfil {
     private List<Formacao> formacoes = new ArrayList<>();
     private List<Curso> cursos = new ArrayList<>();
     private List<Competencia> competencias = new ArrayList<>();
-
+    
 }

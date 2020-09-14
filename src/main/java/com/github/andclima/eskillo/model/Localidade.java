@@ -15,5 +15,10 @@ public class Localidade {
     
     @EqualsAndHashCode.Exclude
     private String uf;
-    
+
+    @Override
+    public String toString() {
+        return nome + "-" + uf + " (" + id + ")";
+    }
+
 }

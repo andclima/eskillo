@@ -62,9 +62,4 @@ public class AreaEstudo implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return descricao + " (" + id + ")";
-    }
-    
 }

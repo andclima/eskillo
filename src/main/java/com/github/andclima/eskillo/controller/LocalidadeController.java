@@ -25,7 +25,7 @@ public class LocalidadeController {
 
     @GetMapping("/localidades/{id}")
     public Localidade get(@PathVariable Long id) {
-        return repo.obtem(id);
+        return repo.busca(id);
     }
 
     @PostMapping("/localidades")

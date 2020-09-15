@@ -29,7 +29,7 @@ public class LocalidadeRepository {
         }
     }
 
-    public Localidade obtem(Long id) {
+    public Localidade busca(Long id) {
         Localidade localidadeEncontrada = null;
         for (Localidade localidade:repository) {
             if (localidade.getId().equals(id)) {

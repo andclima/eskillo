@@ -1,5 +1,9 @@
 package com.github.andclima.eskillo;
 
+import com.github.andclima.eskillo.model.TipoFormacao;
+import com.github.andclima.eskillo.services.TipoFormacaoService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,12 +11,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EskilloApplication implements CommandLineRunner {
 
+	@Autowired
+	private TipoFormacaoService service;
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(EskilloApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		System.out.println("Quantidade de registros: " + service.lista().size());
+
 		
 		// AreaEstudo area1 = new AreaEstudo();
 		// area1.setId(1l);

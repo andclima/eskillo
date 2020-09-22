@@ -1,5 +1,7 @@
 package com.github.andclima.eskillo;
 
+import com.github.andclima.eskillo.model.Localidade;
+import com.github.andclima.eskillo.model.Perfil;
 import com.github.andclima.eskillo.model.TipoFormacao;
 import com.github.andclima.eskillo.services.TipoFormacaoService;
 

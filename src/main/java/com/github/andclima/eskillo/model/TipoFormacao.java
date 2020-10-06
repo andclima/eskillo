@@ -20,7 +20,7 @@ public class TipoFormacao {
     @Column(name = "idTipoFormacao")
     private Long id;
     
-    @EqualsAndHashCode.Exclude 
+    @EqualsAndHashCode.Exclude
     private String descricao;
 
 }

@@ -2,8 +2,8 @@ package com.github.andclima.eskillo.controller;
 
 import java.util.List;
 
-import com.github.andclima.eskillo.model.TipoFormacao;
-import com.github.andclima.eskillo.services.TipoFormacaoService;
+import com.github.andclima.eskillo.model.TipoCompetencia;
+import com.github.andclima.eskillo.services.TipoCompetenciaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,45 +17,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TipoFormacaoController {
+public class TipoCompetenciaController {
 
-    @Autowired  // injecao de dependência
-    private TipoFormacaoService service;
+    @Autowired  
+    private TipoCompetenciaService service;
 
-    @GetMapping("/tipos-de-formacao")
+    @GetMapping("/tipos-de-competencia")
     public ResponseEntity<?> lista() {
-        List<TipoFormacao> lista = service.lista();
+        List<TipoCompetencia> lista = service.lista();
         return ResponseEntity.status(HttpStatus.OK).body(lista);
     }
 
-    @GetMapping("/tipos-de-formacao/{id}")
+    @GetMapping("/tipos-de-competencia/{id}")
     public ResponseEntity<?> get(@PathVariable Long id) {
-        TipoFormacao tipoFormacao = service.busca(id);
-        if (tipoFormacao == null) {
+        TipoCompetencia tipoCompetencia = service.busca(id);
+        if (tipoCompetencia == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok().body(tipoFormacao);
+        return ResponseEntity.ok().body(tipoCompetencia);
     }
 
-    @PostMapping("/tipos-de-formacao")
-    public ResponseEntity<?> post(@RequestBody TipoFormacao tipoFormacao) {
-        TipoFormacao tipo = service.adiciona(tipoFormacao);
+    @PostMapping("/tipos-de-competencia")
+    public ResponseEntity<?> post(@RequestBody TipoCompetencia tipoCompetencia) {
+        TipoCompetencia tipo = service.adiciona(tipoCompetencia);
         return ResponseEntity.status(HttpStatus.CREATED).body(tipo);
     }
 
-    @PutMapping("/tipos-de-formacao")
-    public ResponseEntity<?> put(@RequestBody TipoFormacao tipoFormacao) {
-        TipoFormacao tipo = service.busca(tipoFormacao.getId());
+    @PutMapping("/tipos-de-competencia")
+    public ResponseEntity<?> put(@RequestBody TipoCompetencia tipoCompetencia) {
+        TipoCompetencia tipo = service.busca(tipoCompetencia.getId());
         if (tipo == null) {
             return ResponseEntity.notFound().build();
         }
-        TipoFormacao retorno = service.atualiza(tipoFormacao);
+        TipoCompetencia retorno = service.atualiza(tipoCompetencia);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(retorno);
     }
     
-    @DeleteMapping("/tipos-de-formacao/{id}")
+    @DeleteMapping("/tipos-de-competencia/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        TipoFormacao tipo = service.busca(id);
+        TipoCompetencia tipo = service.busca(id);
         if (tipo == null) {
             return ResponseEntity.notFound().build();
         }

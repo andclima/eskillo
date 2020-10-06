@@ -2,8 +2,8 @@ package com.github.andclima.eskillo.controller;
 
 import java.util.List;
 
-import com.github.andclima.eskillo.model.Localidade;
-import com.github.andclima.eskillo.services.LocalidadeService;
+import com.github.andclima.eskillo.model.AreaEstudo;
+import com.github.andclima.eskillo.services.AreaEstudoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,46 +17,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LocalidadeController {
+public class AreaEstudoController {
 
     @Autowired  
-    private LocalidadeService service;
+    private AreaEstudoService service;
 
-    @GetMapping("/localidades")
+    @GetMapping("/areas-de-estudo")
     public ResponseEntity<?> lista() {
-        List<Localidade> lista = service.lista();
+        List<AreaEstudo> lista = service.lista();
         return ResponseEntity.status(HttpStatus.OK).body(lista);
     }
 
-    @GetMapping("/localidades/{id}")
+    @GetMapping("/areas-de-estudo/{id}")
     public ResponseEntity<?> get(@PathVariable Long id) {
-        Localidade localidade = service.busca(id);
-        if (localidade == null) {
+        AreaEstudo areaEstudo = service.busca(id);
+        if (areaEstudo == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok().body(localidade);
+        return ResponseEntity.ok().body(areaEstudo);
     }
 
-    @PostMapping("/localidades")
-    public ResponseEntity<?> post(@RequestBody Localidade localidade) {
-        Localidade novaLocalidade = service.adiciona(localidade);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novaLocalidade);
+    @PostMapping("/areas-de-estudo")
+    public ResponseEntity<?> post(@RequestBody AreaEstudo areaEstudo) {
+        AreaEstudo area = service.adiciona(areaEstudo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(area);
     }
 
-    @PutMapping("/localidades")
-    public ResponseEntity<?> put(@RequestBody Localidade localidade) {
-        Localidade localidadEncontrada = service.busca(localidade.getId());
-        if (localidadEncontrada == null) {
+    @PutMapping("/areas-de-estudo")
+    public ResponseEntity<?> put(@RequestBody AreaEstudo areaEstudo) {
+        AreaEstudo area = service.busca(areaEstudo.getId());
+        if (area == null) {
             return ResponseEntity.notFound().build();
         }
-        Localidade localidadeAtualizada = service.atualiza(localidade);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(localidadeAtualizada);
+        AreaEstudo retorno = service.atualiza(areaEstudo);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(retorno);
     }
     
-    @DeleteMapping("/localidades/{id}")
+    @DeleteMapping("/areas-de-estudo/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        Localidade localidade = service.busca(id);
-        if (localidade == null) {
+        AreaEstudo area = service.busca(id);
+        if (area == null) {
             return ResponseEntity.notFound().build();
         }
         service.remove(id);

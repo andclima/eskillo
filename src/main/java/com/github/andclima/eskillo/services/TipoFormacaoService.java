@@ -13,28 +13,28 @@ import org.springframework.stereotype.Service;
 public class TipoFormacaoService {
 
     @Autowired
-    TipoFormacaoRepository repository;
+    private TipoFormacaoRepository repository;
 
     public List<TipoFormacao> lista() {
         return repository.findAll();
     }
 
-    public void adiciona(TipoFormacao tipoFormacao) {
-        tipoFormacao.setId(null);
-        repository.save(tipoFormacao);
-    }
-    
-    public void atualiza(TipoFormacao tipoFormacao) {
-        repository.save(tipoFormacao);
-    }
-
-    public void remove(TipoFormacao tipoFormacao) {
-        repository.delete(tipoFormacao);
-    }
-
     public TipoFormacao busca(Long id) {
         Optional<TipoFormacao> tipoFormacao = repository.findById(id);
         return tipoFormacao.orElse(null);
+    }
+
+    public TipoFormacao adiciona(TipoFormacao tipoFormacao) {
+        tipoFormacao.setId(null);
+        return repository.save(tipoFormacao);
+    }
+    
+    public TipoFormacao atualiza(TipoFormacao tipoFormacao) {
+        return repository.save(tipoFormacao);
+    }
+
+    public void remove(Long id) {
+        repository.deleteById(id);
     }
 
 }

@@ -2,10 +2,12 @@ package com.github.andclima.eskillo;
 
 import com.github.andclima.eskillo.model.AreaEstudo;
 import com.github.andclima.eskillo.model.Localidade;
+import com.github.andclima.eskillo.model.Perfil;
 import com.github.andclima.eskillo.model.TipoCompetencia;
 import com.github.andclima.eskillo.model.TipoFormacao;
 import com.github.andclima.eskillo.services.AreaEstudoService;
 import com.github.andclima.eskillo.services.LocalidadeService;
+import com.github.andclima.eskillo.services.PerfilService;
 import com.github.andclima.eskillo.services.TipoCompetenciaService;
 import com.github.andclima.eskillo.services.TipoFormacaoService;
 
@@ -28,6 +30,9 @@ public class EskilloApplication implements CommandLineRunner {
 
 	@Autowired
 	private AreaEstudoService areaEstudoService;
+
+	@Autowired
+	private PerfilService perfilService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EskilloApplication.class, args);
@@ -65,6 +70,22 @@ public class EskilloApplication implements CommandLineRunner {
 		areaEstudoService.adiciona(areaEstudo);
 		areaEstudo = new AreaEstudo(null, "Direito");
 		areaEstudoService.adiciona(areaEstudo);
+
+		localidade = localidadeService.busca(1l);	// Teresina
+
+		Perfil perfil = new Perfil();
+		perfil.setNome("Fulano de Tal");
+		perfil.setCargoAtual("Professor");
+		perfil.setSobre("De boa!");
+		perfil.setEndereco("Rua Cafundó de Judas, 100");
+		perfil.setComplemento("Apto 101");
+		perfil.setBairro("Centro");
+		perfil.setCidade("Teresina");
+		perfil.setUf("PI");
+		perfil.setEmail("fulano@gmail.com");
+		perfil.setVisibilidadePerfil(true);
+		perfil.setLocalidade(localidade);
+		perfilService.adiciona(perfil);
 
 	}
 

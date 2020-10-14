@@ -13,11 +13,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data @NoArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 public class Perfil {
     
     @Id
@@ -62,5 +63,6 @@ public class Perfil {
     @OneToMany
     @JoinColumn(name = "idPerfil")
     private List<Competencia> competencias = new ArrayList<>();
+
 
 }

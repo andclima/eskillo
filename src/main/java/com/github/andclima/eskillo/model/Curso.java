@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +27,13 @@ public class Curso {
     
     private String organizacao;
     private int cargaHoraria;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone="Americas/Fortaleza")
+    @Temporal(TemporalType.DATE)
     private Date dataInicio;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone="Americas/Fortaleza")
+    @Temporal(TemporalType.DATE)
     private Date dataFim;
     private String descricao;
 

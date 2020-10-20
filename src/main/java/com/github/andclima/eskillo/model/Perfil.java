@@ -64,5 +64,4 @@ public class Perfil {
     @JoinColumn(name = "idPerfil")
     private List<Competencia> competencias = new ArrayList<>();
 
-
 }

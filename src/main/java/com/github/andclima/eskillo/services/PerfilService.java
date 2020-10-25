@@ -41,6 +41,9 @@ public class PerfilService {
     @Autowired
     private TelefoneRepository telefoneRepository;
 
+    /* ------------------------ *
+    *   Métodos sobre Perfis
+    * ------------------------- */
     public List<Perfil> lista() {
         return repository.findAll();
     }
@@ -63,6 +66,9 @@ public class PerfilService {
         repository.deleteById(id);
     }
 
+    /* ------------------------ *
+    *   Métodos sobre Cursos
+    * ------------------------- */
     public List<Curso> listaCursos(Long idPerfil) {
         Optional<Perfil> opt = repository.findById(idPerfil);
         if (opt.isPresent()) {
@@ -130,6 +136,9 @@ public class PerfilService {
         }
     }
 
+    /* ----------------------------------------- *
+    *   Métodos sobre Experiências Profissionais
+    * ------------------------------------------ */
     public List<Experiencia> listaExperiencias(Long idPerfil) {
         Optional<Perfil> opt = repository.findById(idPerfil);
         if (opt.isPresent()) {

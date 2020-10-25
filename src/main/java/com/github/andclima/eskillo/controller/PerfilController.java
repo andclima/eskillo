@@ -113,7 +113,6 @@ public class PerfilController {
         return ResponseEntity.ok().body(curso);
     }
 
-
     // Adicionar curso a um perfil
     // POST - http://localhost:8080/perfis/123/cursos
     @PostMapping("/perfis/{idPerfil}/cursos")
@@ -126,13 +125,16 @@ public class PerfilController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCurso);
     }
 
-
     // Atualizar curso de um perfil
     // PUT - http://localhost:8080/perfis/123/cursos
     @PutMapping("/perfis/{idPerfil}/cursos")
     public ResponseEntity<?> atualizaCurso(@PathVariable Long idPerfil, @RequestBody Curso curso) {
         Perfil perfil = service.busca(idPerfil);
         if (perfil == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Curso cursoEncontrado = service.buscaCurso(idPerfil, curso.getId());
+        if (cursoEncontrado == null) {
             return ResponseEntity.notFound().build();
         }
         Curso cursoAtualizado = service.atualizaCurso(idPerfil, curso);
@@ -416,6 +418,7 @@ public class PerfilController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    
     private Perfil converteDtoParaPerfil(PerfilDTO dto) {
         Perfil perfil = new Perfil();
         perfil.setId(dto.getId());

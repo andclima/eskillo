@@ -35,6 +35,7 @@ public class Curso {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone="Americas/Fortaleza")
     @Temporal(TemporalType.DATE)
     private Date dataFim;
+
     private String descricao;
 
 }

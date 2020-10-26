@@ -1,19 +1,5 @@
 package com.github.andclima.eskillo;
 
-import java.text.SimpleDateFormat;
-
-import com.github.andclima.eskillo.model.AreaEstudo;
-import com.github.andclima.eskillo.model.Competencia;
-import com.github.andclima.eskillo.model.Curso;
-import com.github.andclima.eskillo.model.Experiencia;
-import com.github.andclima.eskillo.model.Formacao;
-import com.github.andclima.eskillo.model.Localidade;
-import com.github.andclima.eskillo.model.Perfil;
-import com.github.andclima.eskillo.model.Telefone;
-import com.github.andclima.eskillo.model.TipoCompetencia;
-import com.github.andclima.eskillo.model.TipoEmprego;
-import com.github.andclima.eskillo.model.TipoFormacao;
-import com.github.andclima.eskillo.model.TipoTelefone;
 import com.github.andclima.eskillo.services.AreaEstudoService;
 import com.github.andclima.eskillo.services.LocalidadeService;
 import com.github.andclima.eskillo.services.PerfilService;

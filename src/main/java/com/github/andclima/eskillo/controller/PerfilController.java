@@ -433,6 +433,7 @@ public class PerfilController {
         perfil.setCidade(dto.getCidade());
         perfil.setUf(dto.getUf());
         perfil.setDataNascimento(dto.getDataNascimento());
+        perfil.setSenha(dto.getSenha());
         return perfil;
     }
 
@@ -450,6 +451,7 @@ public class PerfilController {
         dto.setCidade(perfil.getCidade());
         dto.setUf(perfil.getUf());
         dto.setDataNascimento(perfil.getDataNascimento());
+        dto.setSenha(perfil.getSenha());
         return dto;
     }
 

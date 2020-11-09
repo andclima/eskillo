@@ -17,6 +17,7 @@ import com.github.andclima.eskillo.repositories.PerfilRepository;
 import com.github.andclima.eskillo.repositories.TelefoneRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +42,9 @@ public class PerfilService {
     @Autowired
     private TelefoneRepository telefoneRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     /* ------------------------ *
     *   Métodos sobre Perfis
     * ------------------------- */
@@ -55,10 +59,18 @@ public class PerfilService {
 
     public Perfil adiciona(Perfil perfil) {
         perfil.setId(null);
+        // casa123 -> alaoksoaaslaksaslakslasoals
+        perfil.setSenha(passwordEncoder.encode(perfil.getSenha())); // casa123 -> ajkalasoajsalsjao11kqo1`jqo1aj
         return repository.save(perfil);
     }
 
     public Perfil atualiza(Perfil perfil) {
+        Perfil perfilEncontrado = busca(perfil.getId());
+        if (perfilEncontrado != null) {
+            if (!perfilEncontrado.getSenha().equals(perfil.getSenha())) {
+                perfil.setSenha(passwordEncoder.encode(perfil.getSenha()));
+            }
+        }
         return repository.save(perfil);
     }
 

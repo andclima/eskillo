@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,6 +42,7 @@ public class Perfil {
     private String uf;
     private Date dataNascimento;
     private boolean visibilidadePerfil;
+    private String senha;
 
     @OneToOne(mappedBy = "perfil")
     private Fotografia fotografia;

@@ -2,6 +2,7 @@ package com.github.andclima.eskillo.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.andclima.eskillo.model.Localidade;
 
 import lombok.Data;
@@ -22,5 +23,6 @@ public class PerfilDTO {
     private String uf;
     private Date dataNascimento;
     private boolean visibilidadePerfil;
+    private String senha;
     
 }

@@ -51,8 +51,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             Authentication authResult) throws IOException, ServletException {
         String username = ((UserDetailsPerfil) authResult.getPrincipal()).getUsername();
         String token = jwtUtil.generateToken(username);
-        response.addHeader("Authorization", "Bearer " + token);
-    }
+        response.setContentType("application/json");
+        response.getWriter().append("{\"token\": \"" + token + "\"}");
+}
 
     // Classe interna para implementar a resposta 401 quando houver falha na autenticação
     private class JWTAuthenticationFailureHandler implements AuthenticationFailureHandler {
